@@ -1,0 +1,5 @@
+# Archivos con costos de personal: NO subir
+*.xlsx
+plan_rutas_v9_2.html
+*.png
+.claude/
