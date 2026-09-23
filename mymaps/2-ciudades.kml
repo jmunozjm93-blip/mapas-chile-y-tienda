@@ -15,7 +15,7 @@
 <Placemark><name>Santiago Centro</name><description><![CDATA[Región: RM<br>1× Ruta 42 hrs<br>⏱ 42 hrs/sem]]></description><styleUrl>#s</styleUrl><Point><coordinates>-70.648,-33.457,0</coordinates></Point></Placemark>
 <Placemark><name>Vespucio</name><description><![CDATA[Región: RM<br>1× Ruta 42 hrs<br>1× Excl. ropa<br>3× Promotor 30<br>⏱ 162 hrs/sem]]></description><styleUrl>#s</styleUrl><Point><coordinates>-70.58,-33.5,0</coordinates></Point></Placemark>
 <Placemark><name>Oeste</name><description><![CDATA[Región: RM<br>3× Promotor 30<br>⏱ 90 hrs/sem]]></description><styleUrl>#s</styleUrl><Point><coordinates>-70.73,-33.51,0</coordinates></Point></Placemark>
-<Placemark><name>Parque</name><description><![CDATA[Región: RM<br>3× Promotor 30<br>⏱ 90 hrs/sem]]></description><styleUrl>#s</styleUrl><Point><coordinates>-70.6,-33.49,0</coordinates></Point></Placemark>
+<Placemark><name>Parque</name><description><![CDATA[Región: RM<br>3× Promotor 30<br>⏱ 90 hrs/sem]]></description><styleUrl>#s</styleUrl><Point><coordinates>-70.5773,-33.4023,0</coordinates></Point></Placemark>
 <Placemark><name>Costanera</name><description><![CDATA[Región: RM<br>3× Promotor 30<br>⏱ 90 hrs/sem]]></description><styleUrl>#s</styleUrl><Point><coordinates>-70.607,-33.415,0</coordinates></Point></Placemark>
 <Placemark><name>Florida Center</name><description><![CDATA[Región: RM<br>1× Excl. ropa<br>⏱ 30 hrs/sem]]></description><styleUrl>#s</styleUrl><Point><coordinates>-70.56,-33.54,0</coordinates></Point></Placemark>
 <Placemark><name>Egaña</name><description><![CDATA[Región: RM<br>1× Excl. ropa<br>1× Promotor 20<br>⏱ 50 hrs/sem]]></description><styleUrl>#s</styleUrl><Point><coordinates>-70.565,-33.462,0</coordinates></Point></Placemark>
