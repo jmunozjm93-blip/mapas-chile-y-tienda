@@ -131,6 +131,46 @@ tfoot td:first-child{text-align:left;padding-left:11px}
 #map.sv-on,#map.sv-on .leaflet-interactive{cursor:crosshair!important}
 .sv-hint{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);z-index:1000;background:rgba(28,28,30,.9);color:#fff;font-size:12px;padding:8px 14px;border-radius:20px;display:none;white-space:nowrap;max-width:calc(100% - 24px);overflow:hidden;text-overflow:ellipsis}
 .sv-hint.on{display:block}
+.st-card{margin:0 12px 6px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 2px 14px rgba(0,0,0,.08)}
+.st-head{background:linear-gradient(135deg,#1a1a2e 0%,#0f3460 100%);padding:14px 14px 13px 16px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
+.st-kicker{font-size:9px;text-transform:uppercase;letter-spacing:1.2px;color:rgba(255,255,255,.55);margin-bottom:4px}
+.st-total{display:flex;flex-direction:column;color:#fff}
+.st-total #dyn-total{font-size:34px;font-weight:800;line-height:1;letter-spacing:-1px}
+.st-vis{font-size:10px;color:rgba(255,255,255,.65);margin-top:4px}
+.st-actions{display:flex;flex-direction:column;gap:5px}
+.st-act{font:inherit;font-size:10.5px;font-weight:600;border:0;border-radius:14px;padding:5px 11px;cursor:pointer;background:#fff;color:#1a1a2e;white-space:nowrap}
+.st-act.ghost{background:rgba(255,255,255,.14);color:#fff}
+.st-act:hover{filter:brightness(.93)}
+.st-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px}
+.st-tile{--c:#999;position:relative;display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:12px;border:1.5px solid #ececf0;background:#fafafb;cursor:pointer;text-align:left;font:inherit;transition:all .15s;min-width:0}
+.st-tile:hover{border-color:var(--c)}
+.st-tile .st-sw{width:30px;height:30px;border-radius:9px;background:#e9e9ee;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+.st-tile .st-sw i{width:10px;height:10px;border-radius:50%;background:var(--c);box-shadow:0 0 0 2px #fff}
+.st-tile .st-name{font-size:10px;font-weight:700;color:#777;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st-tile .st-num{font-size:19px;font-weight:800;color:#b5b5bd;line-height:1.05;transition:color .15s}
+.st-tile .st-chk{position:absolute;top:7px;right:8px;width:16px;height:16px;border-radius:50%;border:1.5px solid #d4d4da;background:#fff;font-size:10px;line-height:13px;text-align:center;color:transparent;transition:all .15s}
+.st-tile.on{border-color:var(--c);background:color-mix(in srgb,var(--c) 9%,#fff)}
+.st-tile.on .st-sw{background:var(--c)}
+.st-tile.on .st-sw i{background:#fff;box-shadow:none}
+.st-tile.on .st-name{color:var(--c)}
+.st-tile.on .st-num{color:var(--c)}
+.st-tile.on .st-chk{background:var(--c);border-color:var(--c);color:#fff}
+.st-tip{font-size:10px;color:#aaa;text-align:center;padding:0 10px 10px}
+.zl-lbl{display:flex;justify-content:space-between;align-items:center}
+.zl-count{font-weight:600;text-transform:none;letter-spacing:0;color:#aaa}
+.zl{margin:0 12px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+.zl-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid #f3f3f5;cursor:pointer}
+.zl-item:last-child{border-bottom:0}
+.zl-item:hover{background:#f6f7fb}
+.zl-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.zl-txt{flex:1;min-width:0}
+.zl-name{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.zl-addr{font-size:10px;color:#999;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.zl-go{font-size:13px;color:#c5c5cc}
+.zl-empty{padding:16px 14px;font-size:11px;color:#999;text-align:center;line-height:1.5}
+.zl-more{padding:8px;font-size:10.5px;color:#999;text-align:center;background:#fafafb}
+.pin-sel{width:30px;height:42px;filter:drop-shadow(0 3px 4px rgba(0,0,0,.35));animation:pinDrop .35s ease-out}
+@keyframes pinDrop{from{transform:translateY(-18px);opacity:0}to{transform:none;opacity:1}}
 .leaflet-control-layers{border-radius:10px!important;font-size:12px}
 .leaflet-control-layers-expanded{padding:8px 12px 8px 8px}
 .pi{padding:11px 13px;min-width:165px}
@@ -138,6 +178,18 @@ tfoot td:first-child{text-align:left;padding-left:11px}
 .pr{font-size:10px;padding:2px 7px;border-radius:4px;margin-bottom:2px;border-left:3px solid;font-weight:500}
 .ptravel{font-size:10px;color:#888;margin-top:5px;padding-top:5px;border-top:1px solid #f0f0f0}
 .phrs{display:inline-block;background:#EAF4FF;color:#0a4a8a;font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;margin-top:4px}
+/* Pantallas angostas / celular: mapa arriba, panel abajo */
+@media (max-width:760px){
+  body{height:100dvh}
+  .hdr{padding:9px 12px}
+  .hdr p{display:none}
+  .layout{flex-direction:column}
+  .map-col{flex:none;height:52dvh}
+  .side-col{width:100%;flex:1;min-height:0;border-left:0;border-top:1px solid #e5e5ea}
+  .srch{width:calc(100% - 66px)}
+  .sv-hint{bottom:12px;font-size:11px}
+  .leg-box{display:none}
+}
 </style>
 </head>
 <body>
@@ -411,32 +463,24 @@ tfoot td:first-child{text-align:left;padding-left:11px}
 <!-- ===== TIENDAS ===== -->
 <div class="pnl" id="pnl-tiendas" style="padding:12px 0 40px">
 
-  <!-- ── Resumen dinámico de tiendas ── -->
-  <div style="margin:8px 12px 12px;border-radius:14px;overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,.1)">
-
-    <!-- Encabezado total -->
-    <div style="background:linear-gradient(135deg,#1a1a2e 0%,#0f3460 100%);padding:14px 16px;display:flex;align-items:center;justify-content:space-between">
+  <!-- ── Resumen de tiendas: cada tarjeta prende/apaga su cadena en el mapa ── -->
+  <div class="st-card">
+    <div class="st-head">
       <div>
-        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.2px;color:rgba(255,255,255,.55);margin-bottom:4px">Puntos de venta en mapa</div>
-        <div id="dyn-total" style="font-size:38px;font-weight:800;color:#fff;line-height:1;letter-spacing:-1px">340</div>
+        <div class="st-kicker">Puntos de venta</div>
+        <div class="st-total"><span id="dyn-total">340</span><span class="st-vis" id="dyn-visible">ninguna cadena visible</span></div>
       </div>
-      <div style="font-size:38px;opacity:.18;user-select:none">🏪</div>
+      <div class="st-actions">
+        <button type="button" class="st-act" onclick="setAllStores(true)">Mostrar todas</button>
+        <button type="button" class="st-act ghost" onclick="setAllStores(false)">Ocultar</button>
+      </div>
     </div>
-
-    <!-- Grid por cadena (se rellena con JS) -->
-    <div id="dyn-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#e8e8e8"></div>
+    <div id="dyn-grid" class="st-grid"></div>
+    <div class="st-tip">Toca una cadena para verla u ocultarla en el mapa</div>
   </div>
 
-  <div class="slbl">Filtrar tiendas</div>
-  <div class="frow">
-    <button class="mfbtn" data-layer="belsport"  onclick="toggleLayer('belsport',this)">🔵 Belsport</button>
-    <button class="mfbtn" data-layer="bold"      onclick="toggleLayer('bold',this)">🟡 Bold</button>
-    <button class="mfbtn" data-layer="falabella"  onclick="toggleLayer('falabella',this)">🟢 Falabella</button>
-    <button class="mfbtn" data-layer="ripley"    onclick="toggleLayer('ripley',this)">🟣 Ripley</button>
-    <button class="mfbtn" data-layer="paris"     onclick="toggleLayer('paris',this)">🔷 Paris</button>
-    <button class="mfbtn" data-layer="clientes"  onclick="toggleLayer('clientes',this)">🔷 Regionales</button>
-    <button class="mfbtn" data-layer="mallplaza" onclick="toggleLayer('mallplaza',this)">🛍 Mall Plaza</button>
-  </div>
+  <div class="slbl zl-lbl"><span>Tiendas en esta zona</span><span id="zone-count" class="zl-count"></span></div>
+  <div id="zone-list" class="zl"></div>
 </div>
 
 <!-- ===== PERSONAL ===== -->
@@ -734,12 +778,15 @@ function fc(type,btn){
 const layerState = {routes:false,cities:false,belsport:false,bold:false,falabella:false,ripley:false,paris:false,clientes:false};
 let layerGroups = {};
 
-function toggleLayer(name,btn){
-  layerState[name]=!layerState[name];
-  btn.classList.toggle('on',layerState[name]);
-  if(layerState[name]) layerGroups[name]&&map.addLayer(layerGroups[name]);
+function setLayer(name,on){
+  layerState[name]=on;
+  // Sincroniza todos los controles de esa capa (botones de Rutas y tarjetas de Tiendas)
+  document.querySelectorAll('[data-layer="'+name+'"]').forEach(b=>b.classList.toggle('on',on));
+  if(on) layerGroups[name]&&map.addLayer(layerGroups[name]);
   else layerGroups[name]&&map.removeLayer(layerGroups[name]);
+  document.dispatchEvent(new Event('layers-changed'));
 }
+function toggleLayer(name){ setLayer(name,!layerState[name]); }
 
 // Init map AFTER defining helpers
 const map=L.map('map',{center:[-34,-70.9],zoom:5,zoomControl:false});
@@ -1076,37 +1123,6 @@ MALL_PLAZA.forEach(d => {
 
 
 
-// ── Resumen dinámico de tiendas ───────────────────────────────────────────────
-(function buildStoreGrid(){
-  var chains = [
-    {label:'Belsport',  arr: typeof BELSPORT!=='undefined'  ? BELSPORT   : [], color:'#2563EB'},
-    {label:'Bold',      arr: typeof BOLD!=='undefined'      ? BOLD        : [], color:'#EAB308'},
-    {label:'Falabella', arr: typeof FALABELLA!=='undefined' ? FALABELLA   : [], color:'#16A34A'},
-    {label:'Ripley',    arr: typeof RIPLEY!=='undefined'    ? RIPLEY      : [], color:'#7C3AED'},
-    {label:'Paris',     arr: typeof PARIS!=='undefined'     ? PARIS       : [], color:'#1e3a8a'},
-    {label:'Regionales',arr: typeof CLIENTES!=='undefined'  ? CLIENTES    : [], color:'#0D9488'},
-    {label:'Mall Plaza',arr: typeof MALL_PLAZA!=='undefined'? MALL_PLAZA  : [], color:'#C8185D'}
-  ];
-
-  var total = chains.reduce(function(s,c){ return s + c.arr.length; }, 0);
-  var totalEl = document.getElementById('dyn-total');
-  var gridEl  = document.getElementById('dyn-grid');
-  if(totalEl) totalEl.textContent = total;
-  if(!gridEl) return;
-
-  chains.forEach(function(c){
-    var cell = document.createElement('div');
-    cell.style.cssText = 'background:#fff;padding:9px 11px;display:flex;flex-direction:column;gap:2px';
-    cell.innerHTML =
-      '<div style="display:flex;align-items:center;gap:5px">'
-        + '<div style="width:7px;height:7px;border-radius:50%;background:'+c.color+';flex-shrink:0"></div>'
-        + '<span style="font-size:9px;color:#666;font-weight:600;text-transform:uppercase;letter-spacing:.3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+c.label+'</span>'
-      + '</div>'
-      + '<div style="font-size:20px;font-weight:800;color:'+c.color+';line-height:1">'+c.arr.length+'</div>';
-    gridEl.appendChild(cell);
-  });
-})();
-
 // ── Lista filtrable de personal (pestaña Personal) ────────────────────────────
 function fcPersonal(type,btn){
   document.querySelectorAll('#pnl-personal .fbtn').forEach(b=>b.classList.remove('on'));
@@ -1215,6 +1231,7 @@ function showRegionalPin(lat, lng, name, addr) {
     });
   });
 
+  window.STORE_ITEMS=items;window.STORE_CHAINS=CHAINS;
   const box=document.getElementById('srch'),inp=document.getElementById('srch-in'),
         res=document.getElementById('srch-res'),clr=document.getElementById('srch-x');
   let shown=[],act=-1;
@@ -1243,15 +1260,12 @@ function showRegionalPin(lat, lng, name, addr) {
   }
   function pick(it){
     if(!it)return;
-    const btn=document.querySelector('.mfbtn[data-layer="'+it.c.key+'"]');
-    if(!layerState[it.c.key]&&btn) toggleLayer(it.c.key,btn);
-    res.classList.remove('on');inp.blur();
-    map.once('moveend',()=>{ if(it.mk) it.mk.openPopup(); else L.popup().setLatLng([it.s.lat,it.s.lng]).setContent('<div class="pi"><div class="pc">'+esc(it.s.name)+'</div><div class="ptravel">'+esc(it.s.addr||'')+'</div></div>').openOn(map); });
-    map.setView([it.s.lat,it.s.lng],it.s.city?13:17,{animate:true});
+    res.classList.remove('on');inp.value=it.s.name;clr.classList.add('on');inp.blur();
+    focusStore(it.s,it.c,it.s.city?13:17);
   }
 
   inp.addEventListener('input',render);
-  inp.addEventListener('focus',()=>{if(inp.value.trim())render();});
+  inp.addEventListener('focus',()=>{inp.select();if(inp.value.trim())render();});
   inp.addEventListener('keydown',e=>{
     if(e.key==='ArrowDown'&&shown.length){e.preventDefault();setAct((act+1)%shown.length);}
     else if(e.key==='ArrowUp'&&shown.length){e.preventDefault();setAct((act-1+shown.length)%shown.length);}
@@ -1259,8 +1273,65 @@ function showRegionalPin(lat, lng, name, addr) {
     else if(e.key==='Escape'){inp.value='';render();inp.blur();}
   });
   res.addEventListener('click',e=>{const el=e.target.closest('.srch-item');if(el)pick(shown[+el.dataset.i]);});
-  clr.addEventListener('click',()=>{inp.value='';render();inp.focus();});
+  clr.addEventListener('click',()=>{inp.value='';render();clearPin();inp.focus();});
   document.addEventListener('click',e=>{if(!box.contains(e.target))res.classList.remove('on');});
+})();
+
+// ── Pin temporal al elegir una tienda (se va solo al cerrar su ficha) ─────────
+let _selPin=null;
+function clearPin(){ if(_selPin){ const p=_selPin; _selPin=null; map.removeLayer(p); } }
+function focusStore(s,c,zoom){
+  clearPin();
+  const esc=t=>(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const svg='<svg class="pin-sel" viewBox="0 0 30 42"><path d="M15 1C7.3 1 1 7.2 1 14.9 1 25.3 15 41 15 41s14-15.7 14-26.1C29 7.2 22.7 1 15 1z" fill="'+c.color+'" stroke="#fff" stroke-width="2"/><circle cx="15" cy="15" r="5.5" fill="#fff"/></svg>';
+  _selPin=L.marker([s.lat,s.lng],{zIndexOffset:2000,store:s.city?null:s,
+    icon:L.divIcon({className:'',html:svg,iconSize:[30,42],iconAnchor:[15,41],popupAnchor:[0,-40]})}).addTo(map);
+  const pin=_selPin;
+  pin.bindPopup('<div class="pi"><div class="pc" style="color:'+c.color+'">'+esc(s.name)+'</div><div class="ptravel">'+esc(s.addr||'')+'</div><div class="ptravel" style="border-top:0;padding-top:0;margin-top:3px;font-weight:600;color:'+c.color+'">'+c.label+'</div></div>',{maxWidth:240});
+  pin.on('popupclose',()=>{ if(_selPin===pin) clearPin(); });
+  let opened=false;const open=()=>{ if(!opened&&_selPin===pin){opened=true;pin.openPopup();} };
+  map.once('moveend',open); setTimeout(open,900);
+  map.setView([s.lat,s.lng],zoom||17,{animate:true});
+}
+
+// ── Panel de Tiendas: tarjetas por cadena (prender/apagar) + tiendas en esta zona ─
+const STORE_KEYS=STORE_CHAINS.filter(c=>c.key!=='cities');
+function setAllStores(on){ STORE_KEYS.forEach(c=>{ if(!!layerState[c.key]!==on) setLayer(c.key,on); }); }
+(function buildStorePanel(){
+  const labels={clientes:'Regionales'};
+  document.getElementById('dyn-total').textContent=STORE_KEYS.reduce((n,c)=>n+c.arr.length,0);
+  const grid=document.getElementById('dyn-grid');
+  STORE_KEYS.forEach(c=>{
+    const b=document.createElement('button');
+    b.type='button';b.className='st-tile';b.dataset.layer=c.key;b.style.setProperty('--c',c.color);
+    b.innerHTML='<span class="st-sw"><i></i></span><span style="min-width:0"><div class="st-name">'+(labels[c.key]||c.label)+'</div><div class="st-num">'+c.arr.length+'</div></span><span class="st-chk">✓</span>';
+    b.onclick=()=>toggleLayer(c.key);
+    grid.appendChild(b);
+  });
+
+  const list=document.getElementById('zone-list'),cnt=document.getElementById('zone-count'),vis=document.getElementById('dyn-visible');
+  const esc=t=>(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const MAX=60;
+  function refresh(){
+    const on=STORE_KEYS.filter(c=>layerState[c.key]);
+    const n=on.reduce((s,c)=>s+c.arr.length,0);
+    vis.textContent=on.length?(on.length===STORE_KEYS.length?'todas las cadenas visibles':n+' visibles en el mapa'):'ninguna cadena visible';
+    if(!on.length){cnt.textContent='';list.innerHTML='<div class="zl-empty">Prende una o más cadenas arriba para ver aquí<br>las tiendas del sector que estás mirando.</div>';return;}
+    const b=map.getBounds(),ctr=map.getCenter();
+    const inView=STORE_ITEMS.filter(it=>layerState[it.c.key]&&it.c.key!=='cities'&&b.contains([it.s.lat,it.s.lng]))
+      .map(it=>({it,d:ctr.distanceTo([it.s.lat,it.s.lng])})).sort((a,z)=>a.d-z.d);
+    cnt.textContent=inView.length?inView.length+(inView.length===1?' tienda':' tiendas'):'';
+    if(!inView.length){list.innerHTML='<div class="zl-empty">No hay tiendas de las cadenas prendidas en esta zona.<br>Aleja o mueve el mapa.</div>';return;}
+    list.innerHTML=inView.slice(0,MAX).map((x,i)=>
+      '<div class="zl-item" data-i="'+i+'"><span class="zl-dot" style="background:'+x.it.c.color+'"></span>'
+      +'<div class="zl-txt"><div class="zl-name">'+esc(x.it.s.name)+'</div><div class="zl-addr">'+esc(x.it.s.addr||'')+'</div></div><span class="zl-go">›</span></div>'
+    ).join('')+(inView.length>MAX?'<div class="zl-more">Mostrando las '+MAX+' más cercanas al centro · acerca el mapa para ver el resto</div>':'');
+    list._rows=inView;
+  }
+  list.addEventListener('click',e=>{const r=e.target.closest('.zl-item');if(!r)return;const x=list._rows[+r.dataset.i];focusStore(x.it.s,x.it.c,17);});
+  let t=null;const later=()=>{clearTimeout(t);t=setTimeout(refresh,120);};
+  map.on('moveend',later);document.addEventListener('layers-changed',later);
+  refresh();
 })();
 
 // ── Tocar el mapa: abrir ese punto en Google Maps / modo Street View ───────────
