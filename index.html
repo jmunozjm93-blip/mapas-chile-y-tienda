@@ -22,9 +22,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .leg-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px 6px}
 .leg-item{display:flex;align-items:center;gap:6px;padding:2px 0;font-size:10px;color:#333}
 .leg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.tabs{display:flex;background:#fff;border-bottom:1px solid #e5e5ea;position:sticky;top:0;z-index:500;overflow-x:auto;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tab{flex:1 0 auto;white-space:nowrap;padding:10px 7px;text-align:center;font-size:11px;font-weight:500;color:#999;border-bottom:2.5px solid transparent;cursor:pointer}
+.tabs{display:flex;background:#fff;border-bottom:1px solid #e5e5ea;position:sticky;top:0;z-index:500}
+.ti{font-size:15px;line-height:1.1}
+.tl{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tab{flex:1 1 0;min-width:0;position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 1px 7px;text-align:center;font-size:10px;font-weight:500;color:#999;border-bottom:2.5px solid transparent;cursor:pointer}
+.tab:hover{color:#555}
 .tab.on{color:#1a1a2e;border-bottom-color:#1a1a2e;font-weight:600}
 .pnl{display:none;padding-bottom:40px}.pnl.on{display:block}
 .slbl{padding:13px 14px 6px;font-size:10px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:.6px}
@@ -173,7 +175,7 @@ tfoot td:first-child{text-align:left;padding-left:11px}
 .zl-more{padding:8px;font-size:10.5px;color:#999;text-align:center;background:#fafafb}
 .pin-sel{width:30px;height:42px;filter:drop-shadow(0 3px 4px rgba(0,0,0,.35));animation:pinDrop .35s ease-out}
 @keyframes pinDrop{from{transform:translateY(-18px);opacity:0}to{transform:none;opacity:1}}
-.tab-badge{display:none;margin-left:4px;background:#1a73e8;color:#fff;font-size:9.5px;font-weight:700;border-radius:9px;padding:1px 6px;vertical-align:1px}
+.tab-badge{display:none;position:absolute;top:3px;left:calc(50% + 6px);background:#1a73e8;color:#fff;font-size:9.5px;font-weight:700;border-radius:9px;padding:1px 6px;vertical-align:1px}
 .tab-badge.on{display:inline-block}
 /* Grupos de tiendas (clusters): anillo con los colores de las cadenas del grupo */
 .clu{border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.35);transition:transform .15s}
@@ -296,12 +298,12 @@ tfoot td:first-child{text-align:left;padding-left:11px}
 </div>
 
 <div class="tabs">
-  <div class="tab on" onclick="show('rutas',this)">🗺 Rutas</div>
-  <div class="tab"   onclick="show('ciudades',this)">📍 Ciudades</div>
-  <div class="tab"   onclick="show('tiendas',this)">🏪 Tiendas</div>
-  <div class="tab"   onclick="show('clientes',this)">🔷 Regionales</div>
-  <div class="tab"   onclick="show('personal',this)">👤 Personal</div>
-  <div class="tab"   onclick="show('visita',this)">🗓 Visita<span class="tab-badge" id="tab-visita-n"></span></div>
+  <div class="tab on" onclick="show('rutas',this)"><span class="ti">🗺</span><span class="tl">Rutas</span></div>
+  <div class="tab"   onclick="show('ciudades',this)"><span class="ti">📍</span><span class="tl">Ciudades</span></div>
+  <div class="tab"   onclick="show('tiendas',this)"><span class="ti">🏪</span><span class="tl">Tiendas</span></div>
+  <div class="tab"   onclick="show('clientes',this)"><span class="ti">🔷</span><span class="tl">Regionales</span></div>
+  <div class="tab"   onclick="show('personal',this)"><span class="ti">👤</span><span class="tl">Personal</span></div>
+  <div class="tab"   onclick="show('visita',this)"><span class="ti">🗓</span><span class="tl">Visita</span><span class="tab-badge" id="tab-visita-n"></span></div>
 </div>
 
 <!-- ===== PANEL RUTAS ===== -->
