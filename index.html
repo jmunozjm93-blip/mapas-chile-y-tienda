@@ -899,7 +899,20 @@ const baseLayers={
 let baseName='Google Mapa';
 try{const saved=localStorage.getItem('planRutas.base');if(saved&&baseLayers[saved])baseName=saved;}catch(e){}
 baseLayers[baseName].addTo(map);
-L.control.layers(baseLayers,null,{position:'topright',collapsed:true}).addTo(map);
+const layersCtl=L.control.layers(baseLayers,null,{position:'topright',collapsed:true}).addTo(map);
+
+// Límites entre regiones (línea gruesa con borde blanco, bajo rutas y tiendas).
+// Fuente: geoBoundaries CHL ADM1 (BCN / OCHA, CC BY 3.0 IGO); solo los tramos compartidos entre regiones.
+map.createPane('regiones').style.zIndex=350;
+const regionLayer=L.layerGroup();
+fetch('regiones.geojson').then(r=>r.json()).then(gj=>{
+  L.geoJSON(gj,{pane:'regiones',interactive:false,attribution:'Límites: geoBoundaries (CC BY 3.0 IGO)',style:{color:'#fff',weight:7,opacity:.75,lineCap:'round',lineJoin:'round'}}).addTo(regionLayer);
+  L.geoJSON(gj,{pane:'regiones',interactive:false,style:{color:'#1a1a2e',weight:3.5,opacity:.95,lineCap:'round',lineJoin:'round'}}).addTo(regionLayer);
+}).catch(()=>{});
+let regionsOn=true;try{regionsOn=localStorage.getItem('planRutas.regiones')!=='off';}catch(e){}
+if(regionsOn)regionLayer.addTo(map);
+layersCtl.addOverlay(regionLayer,'Límites de regiones');
+map.on('overlayadd overlayremove',e=>{if(e.layer===regionLayer){try{localStorage.setItem('planRutas.regiones',e.type==='overlayadd'?'on':'off');}catch(err){}}});
 map.on('baselayerchange',e=>{try{localStorage.setItem('planRutas.base',e.name);}catch(err){}});
 L.control.zoom({position:'bottomright'}).addTo(map);
 
