@@ -226,6 +226,9 @@ tfoot td:first-child{text-align:left;padding-left:11px}
 .gm-links a.gm-add.in{background:#1a73e8;color:#fff}
 .toast{position:absolute;left:50%;top:60px;transform:translateX(-50%);z-index:1100;background:rgba(28,28,30,.92);color:#fff;font-size:12px;padding:8px 14px;border-radius:20px;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap;max-width:calc(100% - 24px);overflow:hidden;text-overflow:ellipsis}
 .toast.on{opacity:1}
+.reg-name span{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:#1a1a2e;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 5px #fff,0 0 8px rgba(255,255,255,.9);pointer-events:none}
+.reg-names-sm .reg-name span{font-size:9.5px;letter-spacing:.8px}
+.reg-names-off .reg-name{display:none}
 .leaflet-control-layers{border-radius:10px!important;font-size:12px}
 .leaflet-control-layers-expanded{padding:8px 12px 8px 8px}
 .pi{padding:11px 13px;min-width:165px}
@@ -909,6 +912,16 @@ fetch('regiones.geojson').then(r=>r.json()).then(gj=>{
   L.geoJSON(gj,{pane:'regiones',interactive:false,attribution:'Límites: geoBoundaries (CC BY 3.0 IGO)',style:{color:'#fff',weight:7,opacity:.75,lineCap:'round',lineJoin:'round'}}).addTo(regionLayer);
   L.geoJSON(gj,{pane:'regiones',interactive:false,style:{color:'#1a1a2e',weight:3.5,opacity:.95,lineCap:'round',lineJoin:'round'}}).addTo(regionLayer);
 }).catch(()=>{});
+// Nombres de las regiones (Chile continental), en un punto interior de cada una
+map.createPane('regionNames').style.zIndex=450;
+[['Arica y Parinacota',-18.55,-69.75],['Tarapacá',-20.25,-69.35],['Antofagasta',-23.7,-69.3],['Atacama',-27.4,-69.95],
+ ['Coquimbo',-30.45,-70.95],['Valparaíso',-32.55,-70.95],['Metropolitana',-33.55,-70.75],["O'Higgins",-34.45,-71.05],
+ ['Maule',-35.55,-71.4],['Ñuble',-36.65,-71.85],['Biobío',-37.45,-72.25],['La Araucanía',-38.7,-72.3],
+ ['Los Ríos',-39.95,-72.6],['Los Lagos',-41.6,-72.75],['Aysén',-46.4,-72.8],['Magallanes',-52.3,-71.6]
+].forEach(([n,lat,lng])=>L.marker([lat,lng],{pane:'regionNames',interactive:false,keyboard:false,
+  icon:L.divIcon({className:'reg-name',html:'<span>'+n+'</span>',iconSize:[0,0],iconAnchor:[0,0]})}).addTo(regionLayer));
+const syncRegionNames=()=>{const z=map.getZoom();map.getContainer().classList.toggle('reg-names-off',z<5||z>11);map.getContainer().classList.toggle('reg-names-sm',z<7);};
+map.on('zoomend',syncRegionNames);syncRegionNames();
 let regionsOn=true;try{regionsOn=localStorage.getItem('planRutas.regiones')!=='off';}catch(e){}
 if(regionsOn)regionLayer.addTo(map);
 layersCtl.addOverlay(regionLayer,'Límites de regiones');
